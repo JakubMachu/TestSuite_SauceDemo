@@ -17,8 +17,8 @@ This project demonstrates automated testing of the SauceDemo e-commerce site. It
 ## Prerequisites
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- Firefox browser installed
-- Git (for cloning the repository)
+- [Firefox browser installed](https://www.mozilla.org)
+- [Git (for cloning the repository)](https://git-scm.com/downloads)
 
 ## Setup
 
@@ -26,3 +26,11 @@ This project demonstrates automated testing of the SauceDemo e-commerce site. It
    ```bash
    git clone https://github.com/JakubMachu/TestSuite_SauceDemo.git
    cd TestSuite_SauceDemo
+
+2. **Restore dependencies:**
+   ```bash
+   dotnet restore
+
+3. **Add GeckoDriver:**
+- [Download the latest GeckoDriver for your OS)](https://github.com/mozilla/geckodriver/releases)
+- Place geckodriver.exe into the Drivers/ folder in the project root
