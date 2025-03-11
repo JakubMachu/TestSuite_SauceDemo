@@ -1,6 +1,8 @@
 using OpenQA.Selenium;
 using SauceDemoTests.Pages;
 using SauceDemoTests.Utilities;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace SauceDemoTests.Tests
 {
@@ -18,6 +20,7 @@ namespace SauceDemoTests.Tests
         public LoginTests()
         {
             // Set up the WebDriver and create an instance of the LoginPage
+            Logger.Log("Starting test session");
             _driver = DriverFactory.GetDriver();
             _loginPage = new LoginPage(_driver);
         }
@@ -28,14 +31,13 @@ namespace SauceDemoTests.Tests
         [Fact]
         public void SuccessfulLoginTest()
         {
-            // Arrange: Navigate to the login page
-            _loginPage.NavigateTo();
-
-            // Act: Perform login with valid credentials
-            _loginPage.Login("standard_user", "secret_sauce");
-
-            // Assert: Verify the URL redirects to the inventory page
-            Assert.Equal("https://www.saucedemo.com/v1/inventory.html", _driver.Url);
+            Logger.Log("Running SuccessfulLoginTest");
+            _loginPage.NavigateTo();                                                   // Arrange: Navigate to the login page
+            Logger.Log("1) Navigated to login page");
+            _loginPage.Login("standard_user", "secret_sauce");                         // Act: Perform login with valid credentials
+            Logger.Log("2) Login attempted with valid credentials");
+            Assert.Equal("https://www.saucedemo.com/v1/inventory.html", _driver.Url);  // Assert: Verify the URL redirects to the inventory page
+            Logger.Log("3) SuccessfulLoginTest passed");
         }
 
         /// <summary>
@@ -44,9 +46,13 @@ namespace SauceDemoTests.Tests
         [Fact]
         public void FailedLoginTest()
         {
-        _loginPage.NavigateTo();
-        _loginPage.Login("locked_out_user", "secret_sauce");
-        Assert.True(_loginPage.IsErrorMessageDisplayed(), "Error message should be displayed for invalid login.");
+            Logger.Log("1) Running FailedLoginTest");
+            _loginPage.NavigateTo();
+            Logger.Log("2) Navigated to login page");
+            _loginPage.Login("locked_out_user", "secret_sauce");
+            Logger.Log("3) Login attempted with invalid credentials");
+            Assert.True(_loginPage.IsErrorMessageDisplayed(), "Error message should be displayed for invalid login.");
+            Logger.Log("4) FailedLoginTest passed");
         }
 
         /// <summary>
@@ -54,7 +60,7 @@ namespace SauceDemoTests.Tests
         /// </summary>
          public void Dispose()
         {
-            // Close the browser and release resources
+            Logger.Log("Close the browser and release resources");
             _driver.Quit();
         }
     }
