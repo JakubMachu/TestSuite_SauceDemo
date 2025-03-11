@@ -33,12 +33,22 @@ This project demonstrates automated testing of the SauceDemo e-commerce site. It
 
 3. **Add GeckoDriver:**
 - [Download the latest GeckoDriver for your OS)](https://github.com/mozilla/geckodriver/releases)
-- Place geckodriver.exe into the Drivers/ folder in the project root
+- Place geckodriver.exe into the Drivers/ folder in the project root.
 
 ## Running Tests
 
 - Run all tests from the command line:
- ```
+ ```bash
  dotnet test
+ ```
 
-- Logs are saved to bin/Debug/net8.0/log.txt.
+## Project Structure
+- Pages/: Contains POM classes (e.g., LoginPage.cs) for interacting with SauceDemo pages.
+- Tests/: Holds test cases (e.g., LoginTests.cs) using xUnit.
+- Utilities/: Includes helper classes like DriverFactory.cs for browser setup and Logger.cs for logging.
+- Drivers/: Stores geckodriver.exe (not tracked by Git, must be added manually).
+- .gitignore: Ignores generated files (e.g., bin/, obj/, log.txt).
+
+## Planned Improvements
+- Add screenshot capture on test failure.
+- Expand accessibility tests to other pages (e.g., inventory, cart).
