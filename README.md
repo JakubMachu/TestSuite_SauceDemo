@@ -34,3 +34,11 @@ This project demonstrates automated testing of the SauceDemo e-commerce site. It
 3. **Add GeckoDriver:**
 - [Download the latest GeckoDriver for your OS)](https://github.com/mozilla/geckodriver/releases)
 - Place geckodriver.exe into the Drivers/ folder in the project root
+
+## Running Tests
+
+- Run all tests from the command line:
+ ```
+ dotnet test
+
+- Logs are saved to bin/Debug/net8.0/log.txt.
